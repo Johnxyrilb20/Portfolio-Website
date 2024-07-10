@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Website</title>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            border: none;
+            outline: none;
+            scroll-behavior: smooth;
+            font-family: "system-ui";
+        }
+        html {
+            font-size: 60%;
+            overflow-x: hidden;
+        }
+        :root {
+            --bg-color: #080808;
+            --second-bg-color: #001005;
+            --text-color: white;
+            --main-color: #186656;
+            --gencol: linear-gradient(to bottom, #19856f, #007772, #006870, #025969, #1a4a5d);
+            --gencol2: linear-gradient(to bottom, #198562, #007a6d, #006d73, #006071, #175269);
+            --gencol3: linear-gradient(to bottom, #39a482, #2f9789, #388889, #467a82, #526b74);
+        }
+        /* BODY */
+        body {
+            background: var(--bg-color);
+            color: var(--text-color);
+        }
+        .header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            padding: 4rem 12%;
+            background: rgb(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+        #menu-icon {
+            font-size: 3.6rem;
+            color: var(--main-color);
+            display: none;
+        }
+        .logo {
+            font-size: 3rem;
+            color: var(--text-color);
+            font-weight: 800;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+        .logo:hover{
+            transform: scale(1.1);
+        }
+        span {
+            color: var(--main-color);
+        }
+        .navbar a{
+            font-size: 1.8rem;
+            color: var(--text-color);
+            margin-left: 4rem;
+            font-weight: 500;
+            border-bottom: 3px solid transparent;
+            transition: 0.3s ease;
+        }
+        .navbar a:hover{
+            border-bottom: 3px solid var(--main-color);
+            color: var(--main-color);
+        }
+        section {
+            min-height: 100vh;
+            padding: 10rem 12%;
+        }
+        /*   hero   */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10rem;
+            background: url(website_pic/image2.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            margin-top: -13px;
+        }
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            text-align: right;
+            margin-top: 35rem;
+        }
+        .hero-content h1{
+            font-size: 5rem;
+            font-weight: 700;
+            margin-top: 1.5rem;
+            line-height: 1;
+        }
+        .hero-content h3{
+            font-size: 4rem;
+            margin: 1rem 0;
+        }
+        .hero-content p{
+            font-size: 1.5rem;
+            font-weight: 500;
+            line-height: 1.8;
+        }
+        .hero-img img{
+            margin-top: 35rem;
+            width: 32vw;
+            border-radius: 50%;
+            box-shadow: 0 0 25px var(--main-color);
+            transition: 0.4s ease-in-out;
+        }
+        .hero-img img:hover{
+            box-shadow: 0 0 25px var(--main-color),
+                        0 0 50px var(--main-color),
+                        0 0 100px var(--main-color);
+        }
+        .social-icons a{
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3rem;
+            padding: 1rem;
+            background: transparent;
+            border: 2px solid var(--main-color);
+            border-radius: 50%;
+            color: var(--main-color);
+            margin: 3rem 0.5rem;
+            transition: 0.3s ease;
+        }
+        .social-icons a:hover{
+            color: var(--text-color);
+            background-color: var(--main-color);
+            transform: scale(1.2) translateY(-5px);
+            box-shadow: 0 0 25px var(--main-color);
+        }
+        .btn-group {
+            display: flex;
+            gap: 1.5rem;
+        }
+        .btn{
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: var(--main-color);
+            box-shadow: 0 0 25px var(--main-color);
+            border-radius: 3rem;
+            font-size: 1.8rem;
+            color: black;
+            border: 2px solid transparent;
+            font-weight: 600;
+            transition: 0.3s ease-in-out;
+        }
+        .btn:hover{
+            transform: scale(1.05);
+            box-shadow: 0 0 25px var(--main-color),
+                        0 0 50px var(--main-color);
+        }
+        .btn-group a:nth-of-type(2){
+            background-color: black;
+            color: var(--main-color);
+            border: 2px solid var(--main-color);
+            box-shadow: 0 0 25px transparent;
+        }
+        .btn-group a:nth-of-type(2):hover{
+            box-shadow: 0 0 25px var(--main-color);
+            background-color: var(--main-color);
+            color: black;
+        }
+        .about {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10rem;
+            background-color: var(--second-bg-color);
+            background: var(--gencol);
+            background-size: cover;
+        }
+        .about-img img{
+            width: 32vw;
+            border-radius: 50%;
+            box-shadow: 0 0 25px var(--main-color);
+            transition: 0.4s ease-in-out;
+        }
+        .about-img img:hover{
+            box-shadow:  0 0 25px var(--main-color),
+                        0 0 50px var(--main-color),
+                        0 0 100px var(--main-color);
+        }
+        .about-content h2{
+            font-size: 7rem;
+            text-align: left;
+        }
+        .about-content p{
+            font-size: 1.8rem;
+        }
+        .about-content .btn{
+            margin: 3rem 0;
+        }
+
+        ::-webkit-scrollbar{
+            width: 20px;
+        }
+        ::-webkit-scrollbar-thumb{
+            background-color: var(--main-color);
+        }
+        ::-webkit-scrollbar-track{
+            background-color: var(--bg-color);
+        }
+        .heading{
+            text-align: center;
+            font-size: 4rem;
+            margin: 5rem 0;
+        }
+        .portfolios{
+            border-color: var(--bg-color);
+            color: black;
+            background: var(--gencol3);
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .portfolios h2{
+            color: var(--text-color);
+        }
+        .servivces-container{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            align-items: center;
+            gap: 2.5rem;
+            padding: 10px;
+        }
+        .servivces-container .portfolio-box{/* COVER BG*/
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: var(--main-color);
+            height: 600px;
+            border-radius: 3rem;
+            cursor: pointer;
+            border: 5px solid transparent;
+            transition: 0.4s ease-in-out;
+        }
+        .portfolio-box:hover{
+            background-color: var(--second-bg-color);
+            color: var(--main-color);
+            border: 5px solid var(--bg-color);
+            transform: scale(1.03);
+        }
+        .servivces-container .portfolio-box2 img{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: var(--main-color);
+            background-size: contain;
+            height: 600px;
+            border-radius: 3rem;
+            cursor: pointer;
+            border: 5px solid transparent;
+            transition: 0.4s ease-in-out;
+        }
+        .portfolio-box2 img:hover{
+            background-color: var(--second-bg-color);
+            color: var(--main-color);
+            border: 5px solid var(--bg-color);
+            transform: scale(1.03);
+        }
+        .portfolio-box2 img{
+            width: 100%;
+        }
+        .portfolio-box img{
+            width: 100%;
+        }
+        .portfolio-info{
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            padding: 5rem;
+        }
+        .portfolio-info i{
+            font-size: 8rem;
+        }
+        .portfolio-info h4{
+            font-size: 4rem;
+            margin: 2rem 0;
+            font-weight: 800;
+        }
+        .portfolio-info p{/* P */
+            font-size: 2rem;
+            transition-property: font-size;
+            transition-duration: 1s;
+            margin-bottom: -45vh;
+        }
+        .portfolio-info p:hover{/* P HOVER */
+            font-size: 5rem;
+        }
+        .portfolio-info a{/* A hover */
+            color: var(--second-bg-color);
+            border: 5px solid var(--second-bg-color);
+            border-radius: 15px;
+            margin: 95px;
+            padding: 4%;
+        }
+        .portfolio-info a:hover{
+            color: var(--main-color);
+            border: 5px solid var(--main-color);
+            border-radius: 15px;
+        }
+        .contact{
+            background:  var(--gencol2);
+        }
+        .contact h2{
+            margin-bottom: 3rem;
+            color: var(--text-color);
+        }
+        .contact form{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+            margin: 5rem 0;
+            text-align: center;
+        }
+        .contact form .input-box input, .contact form textarea{
+            width: 100%;
+            padding: 2.5rem;
+            font-size: 1.8rem;
+            color: var(--text-color);
+            background-color: var(--main-color);
+            border-radius: 2rem;
+            border: 2px solid var(--gencol);
+            margin: 1.5rem 0;
+            resize: none;
+        }
+        .footer{
+            background-color: var(--bg-color);
+            padding: 50px 0;
+        }
+        .footer .social-icons{
+            text-align: center;
+        }
+        .footer ul{
+            text-align: center;
+            font-size: 1.8rem;
+        }
+        .footer ul li{
+            display: inline-block;
+            margin-left: 20px;
+        }
+        .footer ul li a{
+            color: white;
+            border-bottom: 3px solid transparent;
+            transition: 0.3s ease-in-out;
+        }
+        .footer ul li a:hover{
+            border-bottom: 3px solid var(--main-color);
+        }
+        .footer .copyright{
+            text-align: center;
+            margin-top: 40px;
+            font-size: 16px;
+        }
+        
+        @media(max-width:1024px){
+            #menu-icon{
+                display: block;
+            }
+            .navbar{
+                position: absolute;
+                top: 100%;
+                right: 0px;
+                width: 20%;
+                padding: 1rem 3rem;
+                background-color: rgba(0, 0, 0, 0.8);
+                border-left: 2px solid var(--main-color);
+                border-bottom: 2px solid var(--main-color);
+                border-bottom-left-radius: 2rem;
+                display: none;
+            }
+            .navbar a{
+                display: block;
+                font-size: 2rem;
+                margin: 3rem 0;
+                color: var(--text-color);
+            }
+            .navbar.active{
+                display: block;
+            }
+            .hero{
+                flex-direction: column-reverse;
+                margin: 5rem 0;
+                gap: 5rem;
+            }
+            .hero-content{
+                align-items: center;
+                text-align: center;
+            }
+            .hero-img img{
+                width: 52vw;
+            }
+            .about{
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+            .about h2{
+                text-align: center;
+                margin: 2rem 0;
+            }
+            .about img{
+                width: 52vw;
+            }
+            .contact form{
+                flex-direction: column;
+            }
+        }
+    </style>
+    </head>
+    <body>
+        <header class="header">
+            <a href="#hero" class="logo">LEON
+            <span>HEAD</span></a>
+
+            <i class="bx bx-menu" id="menu-icon"></i>
+
+            <nav class="navbar">
+                <a href="#hero">hero</a>
+                <a href="#about">About</a>
+                <a href="portfolio">portfolio</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </header>
+        <!--Section Hero-->
+        <section class="hero" id="hero">
+            <div class="hero-content">
+                <h1>Hi, i'm <span>John Xyril</span></h1>
+                <h3>i'm a <span>Frontend Developer</span></h3>
+                <p>
+                i am student 2yrs of course as Bachelor Science of Infomration and Technology. 
+                It's been 2 years, I’m working as web developer.
+                i have developed many website and also provided my services to college students by getting their projects ready ASAP as a freelancer 
+                I have been part of some very good web design projects. I have done my graduation in Computer Science.
+                </p>
+                <!--SOCIAL-MEDIA-->
+                <div class="social-icons">
+                    <a target="blank" href="https://github.com/johnxyrilb20">
+                        <i class="bx bxl-github"></i>
+                    </a>
+                    <a target="blank" href="https://www.youtube.com/@johnxyrilb.cabana19">
+                        <i class='bx bxl-youtube'></i>
+                    </a>
+                    <a  target="blank" href="https://www.instagram.com/johnxyrilbcabana?igsh=MXBzbW5qY3J4bmRscg==">
+                        <i class="bx bxl-instagram-alt"></i>
+                    </a>
+                    <a target="blank" href="https://www.facebook.com/johnxyrilb.cabana">
+                        <i class='bx bxl-facebook-circle'></i>
+                    </a>
+                    <a target="blank" href="https://x.com/Johnxyril20?t=E887uJscXmRKvLkCWBuSgw&s=09">
+                        <i class="bx bxl-twitter"></i>
+                    </a>
+                </div>
+
+                <div class="btn-group">
+                    <a target="blank" href="https://johnxyrilb20.github.io/online.resume/" class="btn">Download VC</a>
+                </div>
+            </div>
+            <!--hero IMAGE MY PROFILE-->
+            <div class="hero-img">
+                <img src="website_pic/image.jpg" alt="">
+            </div>
+        </section>
+        <!--Section About-->
+        <section class="about" id="about">
+            <div class="about-img">
+                <img src="website_pic/image.jpg" alt="">
+            </div>
+            <div class="about-content">
+                <div>
+                    <h2>About <span>ME</span></h2>
+                    <p>Front End Developer
+                        Skilled Front-end Developer with 4 years of experience in designing,
+                        developing and maintaining front-end web applications. Achieved measurable success in 
+                        increasing page load speeds by 20% which lead to an increase in website conversion rates.
+                        Led the implementation of new front-end development system which resulted in a 15% reduction
+                        in development time and a 20% increase in website performance.
+                        Adept in collaborating with cross-functional teams and delivering projects on-time and on-budget. </p>
+                    <a href="#" class="btn">Read More</a>
+                </div>
+            </div>
+        </section>
+        <!--Section portfolios-->
+        <section class="portfolios" id="portfolios">
+            <h2 class="heading">Portfolio</h2>
+
+            <div class="servivces-container">
+                <div class="portfolio-box">
+                    <a href="https://johnxyrilb20.github.io/online.resume/">
+                        <img src="website_pic/OnlineR.png" alt="">
+                    </a>
+                </div>
+                <div class="portfolio-box2">
+                    <a href="https://www.figma.com/design/TlVHjTVOvree6VNCy4JSsj/John-Xyril's-Portfolio-Website%23?node-id=0-1&t=3ZY3IUCkj66FYKWQ-1">
+                        <img src="website_pic/pwf.png" alt="">
+                    </a>
+                </div>
+                <div class="portfolio-box">
+                    <a href="https://johnxyrilb20.github.io/rock-paper-scissor/">
+                        <img src="website_pic/RPS.png" alt="">
+                    </a>
+                </div>
+                <div class="portfolio-box">
+                        <a href="https://johnxyrilb20.github.io/ipt101-calculator-app/">
+                            <img src="website_pic/cal.png" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="contact" id="contact">
+            <h2 class="heading">Contact <span>Me</span></h2>
+            <form action="">
+                <div class="input-group">
+                    <div class="input-box">
+                        <input type="text" placeholder="FullName">
+                        <input type="email" placeholder="Email">
+                    </div>
+                    <div class="input-box">
+                        <input type="number" placeholder="Phone Number">
+                        <input type="text" placeholder="Subject">
+                    </div>
+                </div>
+
+                <div class="input-group-2">
+                    <textarea name="" id="" cols="30" rows="10" placeholder="Your Message"></textarea>
+                    <input type="submit" value="Send Message" class="btn">
+                </div>
+                
+            </form>
+
+        </section>
+
+        <footer class="footer">
+            <div class="social-icons">
+                <a target="blank" href="https://github.com/johnxyrilb20">
+                    <i class="bx bxl-github"></i>
+                </a>
+                <a target="blank" href="https://www.youtube.com/@johnxyrilb.cabana19">
+                    <i class='bx bxl-youtube'></i>
+                </a>
+                <a  target="blank" href="https://www.instagram.com/johnxyrilbcabana?igsh=MXBzbW5qY3J4bmRscg==">
+                    <i class="bx bxl-instagram-alt"></i>
+                </a>
+                <a target="blank" href="https://www.facebook.com/johnxyrilb.cabana">
+                    <i class='bx bxl-facebook-circle'></i>
+                </a>
+                <a target="blank" href="https://x.com/Johnxyril20?t=E887uJscXmRKvLkCWBuSgw&s=09">
+                    <i class="bx bxl-twitter"></i>
+                </a>
+            </div>
+            
+            <ul class="list">
+                <li>
+                    <a href="#">FAQ</a>
+                </li>
+                <li>
+                    <a href="#portfolios">portfolio</a>
+                </li>
+                <li>
+                    <a href="#about">About Me</a>
+                </li>
+                <li>
+                    <a href="#contacts">Contact</a>
+                </li>
+            </ul>
+             <p class="copyright">
+                John Xyril Portfolio | ALL Right Reserved 2024
+                JULY
+             </p>
+        </footer>
+
+        <script>
+            const menuicon = document.querySelector('#menu-icon');
+            const navbar = document.querySelector('.navbar');
+
+            menuicon.onclick = () => {
+                menuicon.classList.toggle('bx-x');
+                navbar.classList.toggle('active');
+            }
+        </script>
+    </body>
+</html>
